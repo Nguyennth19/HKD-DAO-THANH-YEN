@@ -26,13 +26,14 @@
     body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #f0f4f8; font-family: 'Inter', sans-serif; }
     #app-frame { width: 100%; height: 100%; border: none; display: none; }
     
-    /* --- MÀN HÌNH CHỜ KHỞI ĐỘNG (SPLASH SCREEN TRÀN VIỀN MOBILE) --- */
+    /* --- MÀN HÌNH CHỜ KHỞI ĐỘNG CHUNG (MẶC ĐỊNH LÀ MOBILE) --- */
     #appSplashScreen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
+        /* Mặc định hiển thị ảnh dọc cho điện thoại */
         background: url('https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/load-phone-hkd-dty.png') no-repeat center center;
         background-size: cover;
         z-index: 99999;
@@ -43,6 +44,17 @@
         padding-bottom: 80px;
         box-sizing: border-box;
         transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+
+    /* --- MÀN HÌNH CHỜ KHỞI ĐỘNG (SPLASH SCREEN TRÀN VIỀN LAPTOP; DESKTOP) --- */
+    /* Sử dụng Media Query để thay đổi ảnh nền khi màn hình rộng từ 768px trở lên */
+    @media (min-width: 768px) {
+        #appSplashScreen {
+            background: url('https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/load-computer-hkd-dty.png') no-repeat center center;
+            background-size: cover;
+            /* Điều chỉnh lại padding-bottom một chút để thanh tiến trình nhìn cân đối hơn trên màn hình lớn */
+            padding-bottom: 10vh; 
+        }
     }
     
     .splash-content { 
