@@ -1,20 +1,24 @@
 /**
  * File: sw.js
  * Dự Án: HKD Đào Thanh Yến (PWA Offline-first)
+ * * HƯỚNG DẪN DÀNH CHO QUẢN TRỊ VIÊN:
+ * - Để kích hoạt chế độ cập nhật bắt buộc (ép xóa cache cũ) cho người dùng,
+ * hãy thay đổi giá trị CACHE_NAME bên dưới sang định dạng Thời gian (Timestamp).
+ * - Định dạng khuyên dùng: 'hkd-dty-YYYYMMDD-HHMM' (Ví dụ: hkd-dty-20260719-1138)
  */
-// Cập nhật Timestamp hiện tại: 19/07/2026 - 11:16
-const CACHE_NAME = 'hkd-dty-20260719-1116';
+// Cập nhật Timestamp hiện tại để ép tải lại cache mới nhất
+const CACHE_NAME = 'hkd-dty-20260719-1138';
 
-// Các tài nguyên tĩnh cục bộ và link hình ảnh cần bộ đệm hoạt động ngoại tuyến
+// Các tài nguyên tĩnh cục bộ cần bộ đệm hoạt động ngoại tuyến (đã loại bỏ link GitHub)
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
   './logo-192.png',
-  './logo-512.jpg',
-  'https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/load-phone-hkd-dty.png',
-  'https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/load-computer-hkd-dty.png',
-  'https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png'
+  './logo-512.png',
+  './phone.png',
+  './computer.png',
+  './coin.png'
 ];
 
 // Sự kiện cài đặt (Install) - Nạp tài nguyên vào Cache
