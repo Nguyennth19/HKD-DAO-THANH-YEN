@@ -20,13 +20,11 @@
   <link rel="icon" type="image/png" sizes="512x512" href="./logo-512.png">
   <link rel="shortcut icon" href="./logo-192.png">
   
-  <!-- Cấu hình Icon -->
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
-  <link rel="apple-touch-icon" sizes="167x167" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
-  <link rel="icon" type="image/jpeg" sizes="192x192" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/icon-htk-dty.png">
+  <!-- Cấu hình Icon cho Apple/iOS sử dụng đường dẫn tuyệt đối -->
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/logo-192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/logo-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/logo-192.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/logo-192.png">
 
   <style>
     body, html { margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; background-color: #f0f4f8; font-family: 'Inter', sans-serif; }
@@ -48,7 +46,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: url('https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/phone.png') no-repeat center center;
+        background: url('./phone.png') no-repeat center center;
         background-size: cover;
         z-index: 99999;
         display: flex;
@@ -62,7 +60,7 @@
 
     @media (min-width: 768px) {
         #appSplashScreen {
-            background: url('https://raw.githubusercontent.com/Nguyennth19/hkd-dao-thanh-yen/refs/heads/main/computer.png') no-repeat center center;
+            background: url('./computer.png') no-repeat center center;
             background-size: cover;
             padding-bottom: 10vh; 
         }
@@ -111,12 +109,15 @@
     }
     
     .progress-bar-fill::after {
-        content: '💸'; 
+        content: ''; 
         position: absolute; 
         right: -14px; 
         top: 50%;
         transform: translateY(-50%); 
-        font-size: 24px; 
+        width: 24px;
+        height: 24px;
+        background: url('./coin.png') no-repeat center center;
+        background-size: contain;
         filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
     }
     
@@ -328,13 +329,13 @@
       }, 300);
     }
 
-    // Cơ chế Fallback an toàn: Hủy Splash sau 12 giây nếu Iframe treo
+    // Cơ chế Fallback an toàn: Hủy Splash theo chuẩn Playbook V2.0 (Tối đa 5 giây)
     setTimeout(() => {
       if (document.getElementById('appSplashScreen')) {
-        console.warn("Iframe tải quá lâu, kích hoạt chế độ Fallback...");
+        console.warn("Iframe tải quá lâu, kích hoạt chế độ Fallback sau 5s...");
         finishLoading();
       }
-    }, 12000);
+    }, 5000);
 
     // ==========================================
     // XỬ LÝ CÀI ĐẶT PWA (ANDROID & IOS)
